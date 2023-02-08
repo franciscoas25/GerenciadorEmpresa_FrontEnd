@@ -1,0 +1,91 @@
+<h1>Cadastrar empresa</h1>
+
+<div class="well">
+  <form #formEmpresa="ngForm">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="nome">Nome empresa:</label>
+          <input type="text"
+                 class="form-control"
+                 id="nomeEmpresa"
+                 name="nomeEmpresa"
+                 [(ngModel)]="empresa.nomeEmpresa"
+                 #nomeEmpresa="ngModel"
+                 maxlength="50"
+                 required>
+          <div *ngIf="nomeEmpresa.errors && (nomeEmpresa.dirty || nomeEmpresa.touched)"
+               class="alert alert-danger">
+            <div [hidden]="!nomeEmpresa.errors.required">
+              Digite o nome da empresa.
+            </div>
+          </div>
+        </div>        
+        <div class="col-md-2">
+          <label for="cnpj">CNPJ:</label>
+          <input type="text"
+                 class="form-control"
+                 id="cnpj"
+                 name="cnpj"
+                 [(ngModel)]="empresa.cnpj"
+                 #cnpj="ngModel"
+                 maxlength="20"
+                 required>
+          <div *ngIf="cnpj.errors && (cnpj.dirty || cnpj.touched)"
+               class="alert alert-danger">
+            <div [hidden]="!cnpj.errors.required">
+              Digite o cnpj da empresa.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="email">Email:</label>
+          <input type="text"
+                 class="form-control"
+                 id="email"
+                 name="email"
+                 [(ngModel)]="empresa.email"
+                 #email="ngModel"
+                 maxlength="50"
+                 required>
+          <div *ngIf="email.errors && (email.dirty || email.touched)"
+               class="alert alert-danger">
+            <div [hidden]="!email.errors.required">
+              Digite o email da empresa.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <label for="celular">Celular:</label>
+          <input type="text"
+                 class="form-control"
+                 id="celular"
+                 name="celular"
+                 [(ngModel)]="empresa.celular"
+                 #celular="ngModel"
+                 maxlength="15"
+                 required>
+          <div *ngIf="celular.errors && (celular.dirty || celular.touched)"
+               class="alert alert-danger">
+            <div [hidden]="!celular.errors.required">
+              Digite o celular da empresa.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group text-center">
+      <input style="margin-right:10px"
+             type="submit"
+             class="btn btn-success"
+             (click)="cadastrar()"
+             value="Cadastrar"
+             [disabled]="!formEmpresa.form.valid">
+      <a [routerLink]="['/empresas']"
+         class="btn btn-default">
+        <span class="glyphicon glyphicon-chevron-left"
+              aria-hidden="true"></span> Voltar
+      </a>
+    </div>
+  </form>
+</div>

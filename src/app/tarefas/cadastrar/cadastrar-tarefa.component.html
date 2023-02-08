@@ -1,0 +1,48 @@
+<h1>Cadastrar tarefa</h1>
+
+<div class="well">
+  <form #formTarefa="ngForm">
+    <div class="row">
+      <div class="form-group col-md-8">
+        <label for="nomeTarefa">Tarefa:</label>
+        <input type="text"
+               class="form-control"
+               id="nomeTarefa"
+               name="nomeTarefa"
+               [(ngModel)]="tarefa.nomeTarefa"
+               #nomeTarefa="ngModel"
+               required>
+        <div *ngIf="nomeTarefa.errors && (nomeTarefa.dirty || nomeTarefa.touched)" class="alert alert-danger">
+          <div [hidden]="!nomeTarefa.errors.required">
+            Digite a tarefa.
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="nomeColaborador">Colaborador:</label>
+        <select name="nomeColaborador"
+                class="form-control"
+                [(ngModel)]="tarefa.colaboradorId"
+                required>
+          <option *ngFor="let colaborador of colaboradores"
+                  [value]="colaborador.id">
+            {{colaborador.nomeColaborador}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group text-center">
+      <input style="margin-right:10px"
+             type="submit"
+             class="btn btn-success"
+             (click)="cadastrar()"
+             value="Cadastrar"
+             [disabled]="!formTarefa.form.valid">
+      <a [routerLink]="['/tarefas']"
+         class="btn btn-default">
+        <span class="glyphicon glyphicon-chevron-left"
+              aria-hidden="true"></span> Voltar
+      </a>
+    </div>
+  </form>
+</div>

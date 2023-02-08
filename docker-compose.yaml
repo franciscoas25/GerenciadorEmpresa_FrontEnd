@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  front-gerenciador-empresa:
+    image: gerenciador-empresa-frontend
+    container_name: front-gerenciador-empresa
+    ports:
+      - "8099:80"
